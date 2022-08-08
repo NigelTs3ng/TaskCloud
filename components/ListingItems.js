@@ -1,47 +1,87 @@
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native'
-import React from 'react'
-import ListingCard from '../components/ListingCard'
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import React from "react";
 
 const items = [
   {
-    index: 1,
+    id: 1,
     image: require("../assets/images/chef-icon.png"),
-    text: "Kitchen",
+    text: "Chef Assistant",
+    text2: "Time: 0800 - 1800",
+    text3: "Venue: Serangoon Avenue 3",
   },
 
   {
-    index: 2,
+    id: 2,
     image: require("../assets/images/programming-icon.png"),
-    text: "Coding",
+    text: "Programming Assistant",
+    text2: "Time: 0800 - 1800",
+    text3: "Venue: Bread Street 23",
   },
 
   {
-    index: 3,
+    id: 3,
     image: require("../assets/images/tutor-icon.png"),
-    text: "Tutoring",
+    text: "Tutoring Assistant",
+    text2: "Time: 0800 - 1800",
+    text3: "Venue: Admiral Avenue 10",
   },
 
   {
-    index: 4,
+    id: 4,
     image: require("../assets/images/doctor-icon.png"),
-    text: "Healthcare",
+    text: "Healthcare Assistant",
+    text2: "Time: 0800 - 1800",
+    text3: "Venue: Bartley Road Avenue 5",
   },
+];
 
-]
-
-export default function ListingItems() {
+export default function ListingItems({ navigation }) {
   return (
-    <ScrollView vertical showsVerticalScrollIndicator={false}>
-      {items.map(item => { return <ListingCard item={item} />} )}
-      <ListingCard style={styles.container} > </ ListingCard>
+    <ScrollView>
+      {items.map((item) => {
+        return (
+          <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+            <View style={styles.listingBox}>
+              <Image source={item.image} style={styles.icon} />
+              <View>
+                <Text style={styles.listingText}>{item.text}</Text>
+                <Text>{item.text2}</Text>
+                <Text>{item.text3}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
     </ScrollView>
   );
 }
 
+/*------------------------Styling--------------------------------*/
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 40,
-    alignItems: "center", 
-    marginRight: 30,
-  }
-})
+  listingBox: {
+    backgroundColor: "#f8f8f8",
+    borderRadius: 15,
+    borderWidth: 1,
+    margin: 5,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  icon: {
+    width: 70,
+    height: 60,
+    resizeMode: "contain",
+  },
+
+  listingText: {
+    fontWeight: "bold",
+    flexDirection: "row",
+  },
+});

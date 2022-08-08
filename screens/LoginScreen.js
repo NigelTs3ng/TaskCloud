@@ -5,10 +5,10 @@ import SearchBar from '../components/SearchBar';
 import Categories from '../components/Categories';
 import ListingItems from '../components/ListingItems';
 
-export default function Home() {
+export default function LoginScreen() {
   return (
     <SafeAreaView style={{ backgroundColor: '#eee', flex: 1}}>
-        <View style={{ backgroundColor: 'blue', padding: 40}}>
+        <View style={{ backgroundColor: '#2C66FF', padding: 40}}>
          <Header style={{ background: 'blue', flex: 1}}/>
          <SearchBar />
         </View>
