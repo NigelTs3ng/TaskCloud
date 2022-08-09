@@ -4,7 +4,7 @@ import React from 'react'
 export default function ResumeScreen() {
   return (
     <Text>
-      ResumeScreen
+      ResumeScreen Test Push 
     </Text>
   )
 }
