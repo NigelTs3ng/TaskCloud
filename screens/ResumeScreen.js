@@ -4,7 +4,7 @@ import React from 'react'
 export default function ResumeScreen() {
   return (
     <Text>
-      ResumeScreen Test Push 
+      ResumeScreen Test Push jia xuan add this
     </Text>
   )
 }
