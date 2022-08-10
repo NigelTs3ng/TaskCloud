@@ -11,7 +11,7 @@ export default function ResumeScreen() {
       <SearchBar />
       </View>
     <Text>
-      Insert Resume Here
+      Insert Resume Here jia xuan add this
     </Text>
 
     </SafeAreaView>
