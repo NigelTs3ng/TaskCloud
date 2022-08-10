@@ -86,9 +86,21 @@ const Tabs = () => {
                 component={ResumeScreen} 
                 options={{
                     tabBarIcon: ({focused}) => (
-                        <View>
-                            <Image/>
-                            <Text>Resume</Text>
+                        <View style={{alignItems: 'center', justifyContent: 'center', top: 5}}>
+                        <Image  
+                        source={require("../assets/images/resume-icon.png")}
+                        resizeMode="contain"
+                        style={{
+                            width: 25,
+                            height: 25,
+                            bottom: 5,
+                            tintColor: focused ? '#e32f45' : '#748c94'
+                        }}
+                        />
+                        <Text
+                            style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                            Resume
+                        </Text>
                         </View>
                     )
                 }} />

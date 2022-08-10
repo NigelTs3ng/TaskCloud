@@ -12,6 +12,8 @@ export default function ResumeScreen() {
       </View>
     <Text>
       {/* Insert Certificate */}
+
+      Insert Resume Here
     </Text>
 
     </SafeAreaView>
