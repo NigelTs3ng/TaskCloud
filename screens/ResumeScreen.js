@@ -1,18 +1,13 @@
 import React from 'react'
 // This allows scrolling of the application
-import { View, Text, SafeAreaView, ScrollView} from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet} from 'react-native'
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Reviews from '../components/Reviews';
 
 
-
-
-
-function Box({ children, ...props }) {
-  return <div {...props}>{children}</div>
-}
-
+// importing stuff for star ratings
+import {FontAwesome} from "@expo/vector-icons"
 
 
 
@@ -31,16 +26,15 @@ export default function ResumeScreen() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'grey',
+          backgroundColor: 'white',
           padding: 20
           }}>
             {/* This is the background of the main resume */}
             <View style={{
-            backgroundColor: "black", 
+            backgroundColor: "#888888", 
             padding: 20, 
             height: 200, 
             width: 350, 
-            opacity: .60,
             borderRadius: 8/1,
             flex : 1,
             flexDirection: 'column',
@@ -52,37 +46,67 @@ export default function ResumeScreen() {
               {/* Enable scrolling within the certificate */}
               <ScrollView>
               {/* ROW 1: Taskcloud Header Image */}
-              <View style = {{
-                backgroundColor: 'red'
-              }}>
-                <Text style={{ fontSize: 40}}>TaskCloud Header Image</Text>
+              <View style={{flexDirection:"row", paddingBottom: 10}}>
+                <Image source= {require("../assets/images/TaskCloud-Icon.png")} style = {{
+                    width: 80,
+                    height: 60,
+                    resizeMode: "contain"}}/>
+                <Text style={{ fontSize: 40, color: 'white'}}>TaskCloud</Text>
               </View>
+
+              <View style={{
+                  borderBottomColor: 'black',
+                  borderBottomWidth: 3}} />
               
 
               {/* ROW 2: Person Details, Ratings, names, age and profile pic */}
 
               <View style = {{
-                backgroundColor: 'green'
-              }}>
-                <Text style={{ fontSize: 40 }}>Person Details, Ratings, names, age and profile pic</Text>
+                display: 'flex', 
+                flexDirection: 'row'
+                }}>
+                {/* Left Column: Image of user*/}
+                <View style = {{padding: 10}}>
+                  <Image source= {require("../assets/images/User-Pic-Icon.png")} style = {{
+                    width: 80,
+                    height: 80,
+                    resizeMode: "contain"}}/> 
+                </View>
+
+                {/* Right Column: Name, age and ratings of user*/}
+                <View style = {{padding: 20}}>
+                  {/* Name and age of the person */}
+                  <View><Text style={{ fontSize: 25, color: 'white' }}>John Doe, 15</Text></View>
+                  <View style={{flexDirection:"row"}}>
+                    
+                    {/* Shows 4 stars out of 5 stars */}
+                    <FontAwesome name="star" color={'yellow'} size={15} style={{marginHorizontal: 6}}></FontAwesome>
+                    <FontAwesome name="star" color={'yellow'} size={15} style={{marginHorizontal: 6}}></FontAwesome>
+                    <FontAwesome name="star" color={'yellow'} size={15} style={{marginHorizontal: 6}}></FontAwesome>
+                    <FontAwesome name="star" color={'yellow'} size={15} style={{marginHorizontal: 6}}></FontAwesome>
+                    <FontAwesome name="star" color={'white'} size={15} style={{marginHorizontal: 6}}></FontAwesome>
+                    <Text style={{ fontSize: 12, color: 'white'}}> 4.0</Text> 
+                  </View>
+                  
+                </View>
+                
               </View>
 
               {/* ROW 3: Tasks Completed: Number, Date Joined: Date */}
-              <View style = {{
-                backgroundColor: 'blue'
-              }}>
-                <Text style={{ fontSize: 15 }}>Tasks Completed: 48</Text>
-                <Text style={{ fontSize: 15 }}>Date Joined: 03/06/2022</Text>
+              <View style = {{paddingVertical: 8}}>
+                <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Tasks Completed: 48</Text>
+                <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Date Joined: 03/06/2022</Text>
               </View>
               
 
               {/* ROW 4: Details of reviews of companies the user had worked at */}
               <View style = {{
-                backgroundColor: 'orange'
+                paddingBottom: 100
               }}>
                 {/* Actual Review display code */}
                 <Reviews />
               </View>
+
               </ScrollView>
 
 

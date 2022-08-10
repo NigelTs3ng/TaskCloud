@@ -3,23 +3,22 @@ import {
     Text,
     Image,
     ScrollView,
-    StyleSheet,
-    TouchableOpacity,
+    StyleSheet
   } from "react-native";
   import React from "react";
   
   const items = [
     {
       id: 1,
-      image: require("../assets/images/chef-icon.png"),
-      text: "KIM'S SEAFOOD PTE. LTD",
+      image: require("../assets/images/Lawyer.png"),
+      text: "Saul Goodman & Associates",
       text2: "View Review"
     },
   
     {
       id: 2,
       image: require("../assets/images/programming-icon.png"),
-      text: "TaskCloud Cloud Solutions",
+      text: "E CORP",
       text2: "View Review"
     },
   
@@ -36,6 +35,34 @@ import {
       text: "Nation University Singapore",
       text2: "View Review"
     },
+
+    {
+      id: 5,
+      image: require("../assets/images/baker.png"),
+      text: "DJ Bakery",
+      text2: "View Review"
+    },
+
+    {
+      id: 6,
+      image: require("../assets/images/pharmacist.png"),
+      text: "Piezer Pharmaceuticals",
+      text2: "View Review"
+    },
+
+    {
+      id: 7,
+      image: require("../assets/images/vet.png"),
+      text: "Vetology Center",
+      text2: "View Review"
+    },
+
+    {
+      id: 8,
+      image: require("../assets/images/doctor-icon.png"),
+      text: "Nation University Singapore",
+      text2: "View Review"
+    }
   ];
   
   export default function ListingItems({ navigation }) {
@@ -44,7 +71,7 @@ import {
         {items.map((item) => {
           return (
               <View style={styles.listingBox}>
-                <Image source={item.image} style={styles.icon} />
+                <Image source={item.image} style={styles.icon}/>
                 <View>
                   <Text style={styles.listingText}>{item.text}</Text>
                   <Text>{item.text2}</Text>
@@ -59,10 +86,10 @@ import {
   /*------------------------Styling--------------------------------*/
   const styles = StyleSheet.create({
     listingBox: {
-      backgroundColor: "#f8f8f8",
-      borderRadius: 15,
+      backgroundColor: "white",
+      borderRadius: 0,
       borderWidth: 1,
-      margin: 5,
+      margin: 1,
       flexDirection: "row",
       alignItems: "center",
     },
