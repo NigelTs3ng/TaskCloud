@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const ProfileLink = createNativeStackNavigator();
 
+// Stack navigator
 const ProfileScreen = () => {
   return (
     <ProfileLink.Navigator screenOptions={{headerShown: false}}>
@@ -24,6 +25,7 @@ const ProfileScreen = () => {
   )
 }
 
+// Default landing page
 function SelectProfile ({ navigation }) {
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
@@ -36,6 +38,8 @@ function SelectProfile ({ navigation }) {
           <Text style={styles.header}> I am a... </Text>
 
           <View style={{padding: 10}}/>
+
+          {/* User link */}
           <Button title="User" onPress={() => {
             navigation.navigate('Profile', {
               screen: 'ProfileUser',
@@ -45,12 +49,15 @@ function SelectProfile ({ navigation }) {
             });
           }}/>
           <View style={{padding: 10}}/>
+
+          {/* Parent link */}
           <Button title="Parent" onPress={() => navigation.navigate('ProfileParent')}/>
         </View>
     </SafeAreaView>
   )
 }
 
+// Preset list of example users
 const users = [
   {
     name: "John",
@@ -66,20 +73,15 @@ const users = [
   }
 ]
 
+// User profile page
 function ProfileUser({ route, navigation }) {
   const { userId } = route.params;
   const { fromParent } = route.params;
 
-  // if (fromParent) {
-  //   backBtn = <Button title="Back" onPress={() => navigation.navigate('ProfileParent')} />;
-  // }
-  // else {
-  //   backBtn = <View/>;
-  // }
-
   return(
     <View>
       {
+        // Display back button if user entered this screen from the parent screen
         fromParent == true && <Button title="Back" onPress={() => navigation.navigate('ProfileParent')} />
       }
       <View style={[styles.container, styles.profileCard, {marginVertical: "50%"}]}>
@@ -93,7 +95,9 @@ function ProfileUser({ route, navigation }) {
   )
 }
 
+// Parent profile page
 function ProfileParent({ navigation }) {
+  // Example set of linked accounts
   const parent = {
     linkedAccounts: [users[0], users[1]]
   }
@@ -104,6 +108,7 @@ function ProfileParent({ navigation }) {
       {
         parent.linkedAccounts.map((user, index) => {
           return (
+            // Each card is a touchable that links to the corresponding user profile
             <TouchableOpacity 
             style={[styles.container, styles.profileCard]} 
             onPress={() => {
