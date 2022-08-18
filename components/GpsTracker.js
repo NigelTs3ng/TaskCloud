@@ -15,6 +15,8 @@ function UserLocation() {
 const [locationStarted, setLocationStarted] = React.useState(false);
 
 
+
+
 const startLocationTracking = async () => {
         await Location.startLocationUpdatesAsync(LOCATION_TRACKING, {
             accuracy: Location.Accuracy.Highest,
@@ -51,6 +53,7 @@ const stopLocation = () => {
                 }
             })
     }
+
 return (
         <View>
               {/* Contains the details of the student being tracked (Name, Username and Current Location) */}
@@ -91,38 +94,37 @@ return (
 
 
           <View style = {styles.container}>
-            {/* Insert old map code here */}
-            <MapView 
+            <MapView
+              onMapLoaded={startLocation}
               style={styles.map} 
-              onMapLoaded = {startLocation}
               initialRegion = {{
                 latitude: lat,
                 longitude: long,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0922
               }}>
-              {/* Pins */}
               <Marker
                 coordinate={{
                   latitude: lat,
                   longitude: long
                 }}
-                pinColor = 'black'>
-
+                tracksViewChanges={true}>
+                {/* Marker Indicating User's Location */}
                 <Callout>
                   <Text>Jane Doe's Location</Text>
                 </Callout>
 
               </Marker>
             </MapView>
+
           </View>
             {locationStarted ?
                 <TouchableOpacity onPress={stopLocation}>
-                    <Text style={styles.btnText}>Start Tracking</Text>
+                    <Text style={styles.btnText}>Stop Tracking</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity onPress={startLocation}>
-                    <Text style={styles.btnText}>Stop Tracking</Text>
+                    <Text style={styles.btnText}>Start Tracking</Text>
                 </TouchableOpacity>
             }
         </View>
