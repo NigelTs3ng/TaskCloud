@@ -1,1 +1,0 @@
-// Template for the certificate structure

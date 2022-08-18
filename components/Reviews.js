@@ -3,9 +3,12 @@ import {
     Text,
     Image,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Dimensions
   } from "react-native";
   import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
   
   const items = [
     {
@@ -67,7 +70,7 @@ import {
   
   export default function ListingItems({ navigation }) {
     return (
-      <ScrollView>
+      <SafeAreaView>
         {items.map((item) => {
           return (
               <View style={styles.listingBox}>
@@ -79,7 +82,7 @@ import {
               </View>
           );
         })}
-      </ScrollView>
+      </SafeAreaView>
     );
   }
   
@@ -92,11 +95,13 @@ import {
       margin: 1,
       flexDirection: "row",
       alignItems: "center",
+      width: Dimensions.get('window').width * .8,
+      height: Dimensions.get('window').width * .15
     },
   
     icon: {
-      width: 70,
-      height: 60,
+      width: 80,
+      height: 50,
       resizeMode: "contain",
     },
   
