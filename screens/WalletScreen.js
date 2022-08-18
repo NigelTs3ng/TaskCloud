@@ -7,7 +7,7 @@ import {
   Button
 } from 'react-native'
 import React from 'react'
-import Modal from 'react-native-modal'
+import { Modal } from 'react-native-web';
 
 const accounts = [
   {

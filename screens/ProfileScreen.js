@@ -89,7 +89,7 @@ function ProfileUser({ route, navigation }) {
         <Text style={styles.profileText}>HP: {`${users[userId].hp}`}</Text>
         <Text style={styles.profileText}>Age: {`${users[userId].age}`}</Text>
         <Text style={styles.profileText}>Status: {`${users[userId].status}`}</Text>
-        <Button title="Get live location" />
+        <Button title="Get live location" onPress={() => navigation.navigate('Gps')}/>
       </View>
     </View>
   )
