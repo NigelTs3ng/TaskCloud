@@ -17,6 +17,7 @@ export default function ResumeScreen() {
 
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
       <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
+      {/* TaskCloud Header */}
       <Header style={{ background: "blue", flex: 1 }} />
       <SearchBar />
       </View>
