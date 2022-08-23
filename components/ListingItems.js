@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/core";
 
 const items = [
   {
@@ -42,12 +43,13 @@ const items = [
   },
 ];
 
-export default function ListingItems({ navigation }) {
+export default function ListingItems() {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       {items.map((item) => {
         return (
-          <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Listing")}>
             <View style={styles.listingBox}>
               <Image source={item.image} style={styles.icon} />
               <View>
