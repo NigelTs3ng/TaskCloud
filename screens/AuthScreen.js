@@ -7,6 +7,7 @@ import {
   Button,
   KeyboardAvoidingView,
   TextInput,
+  ScrollView
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
@@ -55,6 +56,7 @@ const AuthScreen = () => {
       <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
         <Header style={{ background: "blue", flex: 1 }} />
       </View>
+      <ScrollView horizontal = {false}>
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.inputContainer}>
           <TextInput
@@ -85,6 +87,8 @@ const AuthScreen = () => {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
+      </ScrollView>
+
     </SafeAreaView>
   );
 };
