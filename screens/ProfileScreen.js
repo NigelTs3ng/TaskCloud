@@ -29,10 +29,26 @@ const ProfileScreen = () => {
 function SelectProfile({ navigation }) {
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
-        <Header style={{ background: "blue", flex: 1 }} />
-        <SearchBar />
+        {/* <SearchBar /> */}
+        <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: "center"
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
       </View>
+
+
+
+
 
       <View style={styles.container}>
         <Text style={styles.header}> I am a... </Text>
@@ -101,38 +117,61 @@ function ProfileUser({ route, navigation }) {
           />
         )
       }
-      <View
-        style={[
-          styles.container,
-          styles.profileCard,
-          { marginVertical: "50%" },
-        ]}
-      >
-        <Text style={styles.profileText}>Name: {`${users[userId].name}`}</Text>
-        <Text style={styles.profileText}>HP: {`${users[userId].hp}`}</Text>
-        <Text style={styles.profileText}>Age: {`${users[userId].age}`}</Text>
-        <Text style={styles.profileText}>
-          Status: {`${users[userId].status}`}
-        </Text>
+      <SafeAreaView>
+        {/* TaskCloud Header */}
+        <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+          <TouchableOpacity
+            style=
+            {{
+              backgroundColor: "#2C66FF",
+              paddingVertical: 4,
+              paddingHorizontal: 16,
+              borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: "center"              
+            }}
+            onPress={() => navigation.navigate("Home")}>
+          <Header style={{ background: 'blue', flex: 1}}/>
+          </TouchableOpacity>
+        </View>
 
-        {/* GPS link */}
+        {/* Back Button */}
         <Pressable 
           // Button Styling
           style={buttonStyles.button}
           // Button Navigation
-          onPress={() => navigation.navigate("Gps")}>
+          onPress={() => navigation.goBack()}>
             {/* Button Text */}
-            <Text style={buttonStyles.text}>Get live location</Text>
+            <Text style={buttonStyles.text}>Back</Text>
         
         </Pressable>
 
+        <View
+          style={[
+            styles.container,
+            styles.profileCard,
+            { marginVertical: "50%" },
+          ]}
+        >
+          <Text style={styles.profileText}>Name: {`${users[userId].name}`}</Text>
+          <Text style={styles.profileText}>HP: {`${users[userId].hp}`}</Text>
+          <Text style={styles.profileText}>Age: {`${users[userId].age}`}</Text>
+          <Text style={styles.profileText}>
+            Status: {`${users[userId].status}`}
+          </Text>
 
-
-
-
-
-
-      </View>
+          {/* GPS link */}
+          <Pressable 
+            // Button Styling
+            style={buttonStyles.button}
+            // Button Navigation
+            onPress={() => navigation.navigate("Gps")}>
+              {/* Button Text */}
+              <Text style={buttonStyles.text}>Get live location</Text>
+          
+          </Pressable>
+        </View>
+      </SafeAreaView>
     </View>
   );
 }
@@ -145,31 +184,61 @@ function ProfileParent({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>Linked accounts: </Text>
-      {parent.linkedAccounts.map((user, index) => {
-        return (
-          // Each card is a touchable that links to the corresponding user profile
-          <TouchableOpacity
-            style={[styles.container, styles.profileCard]}
-            onPress={() => {
-              navigation.navigate("Profile", {
-                screen: "ProfileUser",
-                params: {
-                  userId: index,
-                  fromParent: true,
-                },
-              });
-            }}
-          >
-            <Text style={styles.profileText}>Name: {user.name}</Text>
-            <Text style={styles.profileText}>HP: {user.hp}</Text>
-            <Text style={styles.profileText}>Age: {user.age}</Text>
-            <Text style={styles.profileText}>Status: {user.status}</Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+    <SafeAreaView>  
+        {/* TaskCloud Header */}
+        <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: "center"            
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
+      </View>
+
+            {/* Back Button */}
+      <Pressable 
+        // Button Styling
+        style={buttonStyles.button}
+        // Button Navigation
+        onPress={() => navigation.goBack()}>
+          {/* Button Text */}
+        <Text style={buttonStyles.text}>Back</Text>
+        
+      </Pressable>
+      <View style={styles.container}>
+        <Text>Linked accounts: </Text>
+        {parent.linkedAccounts.map((user, index) => {
+          return (
+            // Each card is a touchable that links to the corresponding user profile
+            <TouchableOpacity
+              style={[styles.container, styles.profileCard]}
+              onPress={() => {
+                navigation.navigate("Profile", {
+                  screen: "ProfileUser",
+                  params: {
+                    userId: index,
+                    fromParent: true,
+                    
+                  },
+                });
+              }}
+            >
+              <Text style={styles.profileText}>Name: {user.name}</Text>
+              <Text style={styles.profileText}>HP: {user.hp}</Text>
+              <Text style={styles.profileText}>Age: {user.age}</Text>
+              <Text style={styles.profileText}>Status: {user.status}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
 

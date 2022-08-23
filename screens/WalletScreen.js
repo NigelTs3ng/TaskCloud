@@ -29,7 +29,7 @@ const accounts = [
 
 const balance = "xx";
 
-export default function WalletScreen() {
+export default function WalletScreen({navigation}) {
   // Modal
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
@@ -37,8 +37,20 @@ export default function WalletScreen() {
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 , flexDirection:"column"}}>
       {/* Header for the Page */}
-      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
-        <Header style={{ background: "blue", flex: 1 }} />
+        <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: "center"            
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
       </View>
       <ScrollView>
       <View style={{

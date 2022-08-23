@@ -53,8 +53,20 @@ const AuthScreen = () => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
-        <Header style={{ background: "blue", flex: 1 }} />
+            <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+          }}
+          // Remove Home Button Functionality as it allows user to bypass the login function
+          // onPress={() => navigation.navigate("Home")}
+          >
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
       </View>
       <ScrollView horizontal = {false}>
       <KeyboardAvoidingView style={styles.container} behavior="padding">

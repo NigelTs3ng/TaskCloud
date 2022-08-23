@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Image, Dimensions, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
 import SearchBar from "../components/SearchBar";
@@ -7,15 +7,40 @@ import Tabs from '../components/Tab';
 import GpsTracker from '../components/GpsTracker';
 
 
-export default function GpsScreen() {
+export default function GpsScreen({navigation}) {
   return (
     // 
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-    <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
       {/* Header for the application */}
-      <Header style={{ background: "blue", flex: 1 }} />
-      <SearchBar />
-    </View>
+      <View style={{ backgroundColor: "#2C66FF", padding: 20}}>
+        {/* Home Button */}
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: 'center'
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
+      </View>
+      {/* <SearchBar /> */}
+
+      {/* Back Button */}
+      <Pressable 
+        // Button Styling
+        style={buttonStyles.button}
+        // Button Navigation
+        onPress={() => navigation.goBack()}>
+          {/* Button Text */}
+          <Text style={buttonStyles.text}>Back</Text>
+      
+      </Pressable>
+    
 
     <View style={{ 
           flex: 1,
@@ -54,3 +79,27 @@ export default function GpsScreen() {
 
   )
 }
+
+
+
+
+
+/*------------------------Button Styling--------------------------------*/
+const buttonStyles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'blue',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});
