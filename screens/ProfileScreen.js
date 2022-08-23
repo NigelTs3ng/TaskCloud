@@ -5,11 +5,11 @@ import {
   TouchableOpacity,
   StyleSheet,
   Button,
+  Pressable
 } from "react-native";
 import React from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const ProfileLink = createNativeStackNavigator();
@@ -40,24 +40,30 @@ function SelectProfile({ navigation }) {
         <View style={{ padding: 10 }} />
 
         {/* User link */}
-        <Button
-          title="User"
-          onPress={() => {
+      <Pressable style={buttonStyles.button}           
+      onPress={() => {
             navigation.navigate("Profile", {
               screen: "ProfileUser",
               params: {
                 userId: 0,
               },
             });
-          }}
-        />
+          }}>
+        <Text style={buttonStyles.text}>User</Text>
+      </Pressable>
+
         <View style={{ padding: 10 }} />
 
         {/* Parent link */}
-        <Button
-          title="Parent"
-          onPress={() => navigation.navigate("ProfileParent")}
-        />
+        <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={() => navigation.navigate("ProfileParent")}>
+            {/* Button Text */}
+            <Text style={buttonStyles.text}>Parent</Text>
+        
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -108,10 +114,24 @@ function ProfileUser({ route, navigation }) {
         <Text style={styles.profileText}>
           Status: {`${users[userId].status}`}
         </Text>
-        <Button
-          title="Get live location"
-          onPress={() => navigation.navigate("Gps")}
-        />
+
+        {/* GPS link */}
+        <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={() => navigation.navigate("Gps")}>
+            {/* Button Text */}
+            <Text style={buttonStyles.text}>Get live location</Text>
+        
+        </Pressable>
+
+
+
+
+
+
+
       </View>
     </View>
   );
@@ -176,3 +196,24 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
   },
 });
+
+/*------------------------Button Styling--------------------------------*/
+const buttonStyles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'blue',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});
+

@@ -75,7 +75,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
           return (
               <View style={styles.listingBox}>
                 <Image source={item.image} style={styles.icon}/>
-                <View>
+                <View style={styles.listingRows}>
                   <Text style={styles.listingText}>{item.text}</Text>
                   <Text>{item.text2}</Text>
                 </View>
@@ -98,6 +98,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
       width: Dimensions.get('window').width * .8,
       height: Dimensions.get('window').width * .15
     },
+
+    listingRows: {
+      flex: 1,
+      flexDirection: "column"
+    },
   
     icon: {
       width: 80,
@@ -108,6 +113,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
     listingText: {
       fontWeight: "bold",
       flexDirection: "row",
+      fontSize: 12
     },
+
+    reviewText: {
+      fontSize: 115
+    }
   });
   

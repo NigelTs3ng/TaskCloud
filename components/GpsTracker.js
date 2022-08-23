@@ -61,7 +61,7 @@ const stopLocation = () => {
     }
 
 return (
-        <View >
+        <View>
               {/* Contains the details of the student being tracked (Name, Username and Current Location) */}
               <View style = {{
                 display: 'flex', 

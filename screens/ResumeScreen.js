@@ -43,14 +43,19 @@ export default function ResumeScreen() {
             alignItems: 'center',
             
             }}>
-              <ScrollView horizontal = {false} showsVerticalScrollIndicator={true}>
+              <ScrollView 
+              horizontal = {false} 
+              showsVerticalScrollIndicator={true} 
+              scalesPageToFit={true}
+              bounces={false}
+              width={"100%"}>
                 {/* ROW 1: Taskcloud Header Image */}
-                <View style={{flexDirection:"row", paddingBottom: 10}}>
+                <View style={{flexDirection:"row", paddingBottom: 10, width:"100%"}}>
                   <Image source= {require("../assets/images/TaskCloud-Icon.png")} style = {{
                       width: 80,
                       height: 60,
                       resizeMode: "contain"}}/>
-                  <Text style={{ fontSize: 40, color: 'white'}}>TaskCloud</Text>
+                  <Text style={{ fontSize: 35, color: 'white', padding: 5}}>TaskCloud</Text>
                 </View>
 
                 <View style={{

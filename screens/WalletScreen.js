@@ -4,15 +4,22 @@ import {
   ScrollView, 
   TouchableOpacity,
   StyleSheet,
-  Button
+  Button,
+  Image,
+  SafeAreaView,
+  Dimensions,
+  Pressable
 } from 'react-native'
 import React from 'react'
-import { Modal } from 'react-native-web';
+import Modal from "react-native-modal";
+import Header from "../components/Header";
+import LisingEarnings from '../components/ListingEarnings';
+
 
 const accounts = [
   {
       id: 1,
-      num: "1234-XXXX-XXXX-XXXX"
+      num: "5412-7512-3412-3456"
   },
   {
       id: 2,
@@ -28,10 +35,60 @@ export default function WalletScreen() {
   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
   return (
-    <View style={{padding: 20, justifyContent: "center"}}>
+    <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 , flexDirection:"column"}}>
+      {/* Header for the Page */}
+      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
+        <Header style={{ background: "blue", flex: 1 }} />
+      </View>
+      <ScrollView>
+      <View style={{
+        padding: 10,
+      }}>
+        <View style={{
+          backgroundColor: "black",
+          opacity: .75,
+          padding: 10,
+          borderRadius: 10/1
+        }}>
+        {/* Contains the details of the student being tracked (Name, Username and Current Location) */}
+        <View style = {{
+          display: 'flex', 
+          flexDirection: 'row'
+          }}>
+          {/* Left Column: Image of user*/}
+          <View style = {{padding: 10}}>
+            <Image source= {require("../assets/images/User-Pic-Icon.png")} style = {{
+              width: 80,
+              height: 80,
+              resizeMode: "contain"}}/> 
+          </View>
+
+          {/* Right Column: Name, age of user*/}
+          <View style = {{paddingTop: "7%"}}>
+            
+            {/* Username Details */}
+            <View style={{flexDirection:"row"}}>
+              <Text style={{ fontSize: 18, color: 'white',  fontWeight: "bold"}}>Username: </Text>
+              <Text style={{ fontSize: 16, color: 'white' }}>roadster29</Text>
+            </View>
+
+            {/* Name Details */}
+            <View style={{flexDirection:"row"}}>
+              <Text style={{ fontSize: 18, color: 'white',  fontWeight: "bold"}}>Name: </Text>
+              <Text style={{ fontSize: 16, color: 'white' }}>Jane Doe</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{padding: 20, justifyContent: "center", backgroundColor:"grey", borderRadius: 40/1}}>
+        {/* Image of credit card */}
+        <Image source= {require("../assets/images/creditCard.png")} 
+          style = {{
+            width: "100%",
+            height: 200,
+            resizeMode: "contain"}}
+          /> 
       <Text style={styles.accountsHeader}> Balance: {balance} </Text>
       <Text style={styles.accountsHeader}> Linked accounts </Text>
-      <ScrollView>
         <View style={styles.accountsBox}>
         {
           accounts.map(account => {
@@ -48,8 +105,31 @@ export default function WalletScreen() {
           })
         }
         </View>
-      </ScrollView>
-      <Button title="Deposit" onPress={handleModal}/>
+        <View>
+          {/* Money Symbol */}
+          <View style={earnedStyling.earningsBox}>
+                <Image source={require("../assets/images/money.png")} style={earnedStyling.icon} />
+                <View>
+                  <Text style={earnedStyling.listingText}>Amount Earned: $280</Text>
+                  <Text style={earnedStyling.normalText}>+10.2% from last month!</Text>
+                </View>
+              </View>
+        </View>
+
+        <LisingEarnings />
+      
+      {/* Deposit Button */}
+      <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={handleModal}>
+          {/* Button Text */}
+          <Text style={buttonStyles.text}>Deposit</Text>
+      </Pressable>
+
+
+
       <Modal isVisible={isModalVisible} style={styles.popupBox}>
       <View>
         <Text> Select account to deposit to </Text>
@@ -64,10 +144,30 @@ export default function WalletScreen() {
             )
           })
         }
-      <Button title="Close" onPress={handleModal}/>
+
+      {/* Close Button */}
+      <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={handleModal}>
+          {/* Button Text */}
+          <Text style={buttonStyles.text}>Close</Text>
+      </Pressable>
+
+
       </View>
       </Modal>
     </View>
+
+      </View>
+
+
+      </View>
+      <View style={{paddingVertical: Dimensions.get('window').width * .15}}/>
+
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -101,3 +201,53 @@ const styles = StyleSheet.create({
       
   }
 })
+
+
+
+/*------------------------Button Styling--------------------------------*/
+const buttonStyles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'blue',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});
+
+  /*------------------------Amount Earned Styling--------------------------------*/
+  const earnedStyling = StyleSheet.create({
+    earningsBox: {
+      backgroundColor: "#f8f8f8",
+      borderRadius: 15,
+      borderWidth: 1,
+      margin: 5,
+      flexDirection: "row",
+      alignItems: "center",
+    },
+  
+    icon: {
+      width: 70,
+      height: 60,
+      resizeMode: "contain",
+    },
+  
+    listingText: {
+      fontWeight: "bold",
+      flexDirection: "row",
+      fontSize: 10
+    },
+
+    normalText : {
+        fontSize: 8
+    }
+  });

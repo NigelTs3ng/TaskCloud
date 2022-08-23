@@ -37,7 +37,6 @@ export default function GpsScreen() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            
             }}>                          
               {/* Actual Display of the GPS Screen */}
               <GpsTracker style={{      
