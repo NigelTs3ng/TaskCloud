@@ -61,11 +61,11 @@ const stopLocation = () => {
     }
 
 return (
-        <View>
+        <View >
               {/* Contains the details of the student being tracked (Name, Username and Current Location) */}
               <View style = {{
                 display: 'flex', 
-                flexDirection: 'row'
+                flexDirection: 'row',
                 }}>
                 {/* Left Column: Image of user*/}
                 <View style = {{padding: 10}}>
@@ -80,20 +80,20 @@ return (
                   
                   {/* Username Details */}
                   <View style={{flexDirection:"row"}}>
-                    <Text style={{ fontSize: 19, color: 'white',  fontWeight: "bold"}}>Username: </Text>
-                    <Text style={{ fontSize: 19, color: 'white' }}>roadster29</Text>
+                    <Text style={{ fontSize: 18, color: 'white',  fontWeight: "bold"}}>Username: </Text>
+                    <Text style={{ fontSize: 18, color: 'white' }}>roadster29</Text>
                   </View>
 
                   {/* Name Details */}
                   <View style={{flexDirection:"row"}}>
-                    <Text style={{ fontSize: 19, color: 'white',  fontWeight: "bold"}}>Name: </Text>
-                    <Text style={{ fontSize: 19, color: 'white' }}>Jane Doe</Text>
+                    <Text style={{ fontSize: 18, color: 'white',  fontWeight: "bold"}}>Name: </Text>
+                    <Text style={{ fontSize: 18, color: 'white' }}>Jane Doe</Text>
                   </View>
 
                   {/* Current Location */}
                   <View style={{flexDirection:"row"}}>
-                    <Text style={{ fontSize: 19, color: 'white',  fontWeight: "bold"}}>Current Location: </Text>
-                      <Text style={{ fontSize: 19, color: 'red' }}>LIVE</Text>
+                    <Text style={{ fontSize: 18, color: 'white',  fontWeight: "bold"}}>Current Location: </Text>
+                      <Text style={{ fontSize: 18, color: 'red' }}>LIVE</Text>
                   </View>
                 </View>
               </View>
@@ -101,7 +101,6 @@ return (
           {/* Container holding Google Maps */}
           <View style = {styles.container}>
             <MapView
-              provider = {PROVIDER_GOOGLE}
               onMapLoaded={startLocation}
               style={styles.map} 
               showsUserLocation = {true}
@@ -120,16 +119,18 @@ const styles = StyleSheet.create({
     // Dimension of the container holding the map (OR NOT GOOGLE MAPS WONT RENDER)
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'black',
       alignItems: 'center',
       justifyContent: 'center',
-      height: Dimensions.get('window').height / 3
     },
 
     // Dimensions of google map
     map: {
-      width: Dimensions.get('window').width / 1.2,
-      height: Dimensions.get('window').height / 1.95,
+      // width: Dimensions.get('window').width / 1.2,
+      // height: Dimensions.get('window').height / 3,
+      width: "100%",
+      height: '100%',
+
     }
 
 });
