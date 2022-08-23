@@ -8,33 +8,84 @@ import {
   KeyboardAvoidingView,
   TextInput,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
+import { auth } from "../components/firebase";
+import { useNavigation } from "@react-navigation/core";
 
 // Email & Password Fields
 const AuthScreen = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("Tabs", { screen: "HomeScreen" });
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleSignUp = () => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Registered with:", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const handleLogin = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Logged in with:", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
+
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Email" />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-        />
+    <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
+      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
+        <Header style={{ background: "blue", flex: 1 }} />
       </View>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry
+          />
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text style={styles.buttonText}> Login </Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleLogin} style={styles.button}>
+            <Text style={styles.buttonText}> Login </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+          <TouchableOpacity
+            onPress={handleSignUp}
+            style={[styles.button, styles.buttonOutline]}
+          >
+            <Text style={styles.buttonOutlineText}> Sign Up </Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
@@ -65,20 +116,38 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "blue",
-    width: '100%',
+    backgroundColor: "#2C66FF",
+    width: "100%",
     padding: 15,
     borderRadius: 10,
+    alignItems: "center",
+  },
+
+  buttonOutline: {
+    backgroundColor: "white",
+    marginTop: 5,
+    borderColor: "#2C66FF",
+    borderWidth: 2,
   },
 
   buttonContainer: {
-    width: '60%', 
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "60%",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 40,
   },
 
-  buttonText: {},
+  buttonText: {
+    color: "white",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+
+  buttonOutlineText: {
+    color: "#2C66FF",
+    fontWeight: "700",
+    fontSize: 16,
+  },
 });
 
 export default AuthScreen;
