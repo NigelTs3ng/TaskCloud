@@ -31,7 +31,7 @@ export default function GpsScreen() {
             opacity: .75,
             padding: 20, 
             height: 200, 
-            width: 350, 
+            width: "110%", 
             borderRadius: 8/1,
             flex : 1,
             flexDirection: 'column',
@@ -42,7 +42,8 @@ export default function GpsScreen() {
               {/* Actual Display of the GPS Screen */}
               <GpsTracker style={{      
                 width: Dimensions.get('window').width / 1.2,
-                height: Dimensions.get('window').height / 3}}>
+                height: Dimensions.get('window').height / 1.95                
+                }}>
               </GpsTracker>
               
             </View>
