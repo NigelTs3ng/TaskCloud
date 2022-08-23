@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Tabs from "./components/Tab";
 import GpsScreen from "./screens/GpsScreen";
 import AuthScreen from "./screens/AuthScreen";
-import ListingScreen from "./screens/ListingScreen"
+import ListingScreen from "./screens/ListingScreen";
 
 const Stack = createNativeStackNavigator();
 

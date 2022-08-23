@@ -49,9 +49,7 @@ export default function ListingItems() {
     <ScrollView>
       {items.map((item) => {
         return (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Listing")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Listing")}>
             <View style={styles.listingBox}>
               <Image source={item.image} style={styles.icon} />
               <View>
