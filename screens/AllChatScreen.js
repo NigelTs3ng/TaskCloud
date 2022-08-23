@@ -8,6 +8,8 @@ import {
   TextInput, 
   KeyboardAvoidingView,
   Button,
+  Pressable,
+  ScrollView
 } from 'react-native'
 import React, { useReducer } from 'react'
 import Header from '../components/Header';
@@ -70,12 +72,22 @@ var msg;
 function AllChats({ navigation }) {
   return (
     <SafeAreaView style={{ backgroundColor: '#eee', flex: 1}}>
-        <View style={{ backgroundColor: '#2C66FF', padding: 40}}>
+      <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: 'center'
+          }}
+          onPress={() => navigation.navigate("Home")}>
          <Header style={{ background: 'blue', flex: 1}}/>
-         <SearchBar />
-        </View>
-         
-        <View>
+        </TouchableOpacity>
+      </View>
+         <View>
         <Text style={{margin: 10, fontWeight: "bold", fontSize: 20}}>Chats:</Text>
           {
             chats.map((chat) => {
@@ -118,11 +130,30 @@ function ChatScreen({ route, navigation }) {
   }
   ///////////////////////////////////////////////
   return (
+    
     <View style={{paddingHorizontal: 20, paddingVertical: 50, height: "80%"}}>
-      {/* Header */}
-      <View style={styles.chatHeaderBox}>
-        <Text style={styles.chatHeaderText}>{chatRecipient}</Text>
-      </View>
+      
+      <View style={{      
+        flexDirection: "row",
+        alignItems: "center"}}>
+        {/* Back Button */}
+        <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={() => navigation.goBack()}>
+            {/* Button Text */}
+            <Text style={buttonStyles.text}>BACK</Text>
+        </Pressable>
+
+        {/* Header */}
+        <View style={styles.chatHeaderBox}>
+          <Text style={styles.chatHeaderText}>{chatRecipient}</Text>
+
+        </View>
+      </View> 
+
+
       {/* Chat bubbles */}
       <KeyboardAvoidingView style={styles.textInputContainer} behaviour="position">
       {
@@ -133,10 +164,26 @@ function ChatScreen({ route, navigation }) {
         })
       }
       {/* Text input */}
+      <View
+        style=
+        {{
+          flexDirection: "row",
+          alignItems: "center"
+        }}>
         <TextInput style={styles.textInput} onChangeText={(text) => msg = text} />
-        <Button title="Send" onPress={() => {sendMessage(msg, chatId); handleClick()}} />
-      </KeyboardAvoidingView>
+        {/* Send Button */}
+        <Pressable 
+          // Button Styling
+          style={buttonStyles.button}
+          // Button Navigation
+          onPress={() => {sendMessage(msg, chatId); handleClick()}}>
+            {/* Button Text */}
+            <Text style={buttonStyles.text}>SEND</Text>
+        </Pressable>        
+      </View>
+      </KeyboardAvoidingView>      
       
+
     </View>
   )
 }
@@ -207,7 +254,7 @@ const styles = StyleSheet.create({
   chatHeaderText: {
     fontSize: 25,
     fontWeight: "bold",
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   chatBubbleSend: {
     backgroundColor: "#0078fe",
@@ -304,3 +351,25 @@ const styles = StyleSheet.create({
     width: "80%"
   },
 })
+
+
+
+/*------------------------Button Styling--------------------------------*/
+const buttonStyles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'blue',
+  },
+  text: {
+    fontSize: 10,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});
