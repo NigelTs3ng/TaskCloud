@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 import HomeScreen from '../screens/HomeScreen';
-import AllChatScreen from '../screens/AllChatScreen';
+import ChatScreenLanding from '../screens/AllChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import WalletScreen from '../screens/WalletScreen';
 import ResumeScreen from '../screens/ResumeScreen';
@@ -60,7 +60,7 @@ const Tabs = () => {
             />
             <Tab.Screen 
                 name="Chats" 
-                component={AllChatScreen}
+                component={ChatScreenLanding}
                 options={{
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center', top: 5}}>
