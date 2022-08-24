@@ -22,10 +22,26 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
-        <Header style={{ background: "blue", flex: 1 }} />
-        <SearchBar />
+      {/* Header for the application */}
+      <View style={{ backgroundColor: "#2C66FF", padding: 20}}>
+        {/* Home Button */}
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: 'center'
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
       </View>
+
+
+      {/* <SearchBar /> */}
       <Categories />
       <View
         style={{
