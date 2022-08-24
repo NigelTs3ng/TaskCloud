@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import Header from "../components/Header";
@@ -21,28 +22,16 @@ export default function ListingScreen() {
         <Header style={{ background: "blue", flex: 1 }} />
         <SearchBar />
       </View>
-      <ScrollView>
-        <View
-          style={{
-            alignItems: "center",
-            flexDirection: "column",
-            flex: 1,
-            padding: 0,
-          }}
-        >
-          <Image
-            source={listingPicture}
-            style={{
-              flexDirection: "column",
-              flex: 1,
-              width: Dimensions.get("window").width,
-              height: Dimensions.get("window").height,
-            }}
-          ></Image>
-        </View>
 
+      <View
+        style={{
+          alignItems: "center",
+          flexDirection: "column",
+          flex: 1,
+        }}
+      >
         <Image
-          source={Description}
+          source={listingPicture}
           style={{
             flexDirection: "column",
             flex: 1,
@@ -50,26 +39,18 @@ export default function ListingScreen() {
             height: Dimensions.get("window").height,
           }}
         ></Image>
-      </ScrollView>
+      </View>
+
+      <Image
+        source={Description}
+        style={{
+          flexDirection: "column",
+          flex: 1,
+          paddingTop: 10,
+          width: Dimensions.get("window").width,
+          height: Dimensions.get("window").height,
+        }}
+      ></Image>
     </SafeAreaView>
   );
 }
-
-/*------------------------Styling--------------------------------*/
-const styles = StyleSheet.create({
-  listingPic: {
-    alignItems: "center",
-    flexDirection: "column",
-    flex: 1,
-    resizeMode: "contain",
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-
-  listing: {
-    alignItems: "center",
-    flexDirection: "column",
-    flex: 1,
-    padding: 0,
-  },
-});

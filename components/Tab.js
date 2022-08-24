@@ -47,11 +47,11 @@ const Tabs = () => {
                                 width: 25,
                                 height: 25,
                                 bottom: 5,
-                                tintColor: focused ? '#e32f45' : '#748c94'
+                                tintColor: focused ? '#2C66FF' : '#748c94'
                              }}
                             />
                               <Text
-                                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                                style={{color: focused ? '#2C66FF' : '#748c94', fontSize: 12}}>
                                  Home
                               </Text>
                         </View>
@@ -71,11 +71,11 @@ const Tabs = () => {
                                 width: 25,
                                 height: 25,
                                 bottom: 5,
-                                tintColor: focused ? '#e32f45' : '#748c94'
+                                tintColor: focused ? '#2C66FF' : '#748c94'
                              }}
                             />
                               <Text
-                                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                                style={{color: focused ? '#2C66FF' : '#748c94', fontSize: 12}}>
                                  Chats
                               </Text>
                         </View>
@@ -95,11 +95,11 @@ const Tabs = () => {
                             width: 25,
                             height: 25,
                             bottom: 5,
-                            tintColor: focused ? '#e32f45' : '#748c94'
+                            tintColor: focused ? '#2C66FF' : '#748c94'
                         }}
                         />
                         <Text
-                            style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                            style={{color: focused ? '#2C66FF' : '#748c94', fontSize: 12}}>
                             Resume
                         </Text>
                         </View>
@@ -118,11 +118,11 @@ const Tabs = () => {
                                 width: 25,
                                 height: 25,
                                 bottom: 5,
-                                tintColor: focused ? '#e32f45' : '#748c94'
+                                tintColor: focused ? '#2C66FF' : '#748c94'
                              }}
                             />
                               <Text
-                                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                                style={{color: focused ? '#2C66FF' : '#748c94', fontSize: 12}}>
                                  Profile
                               </Text>
                         </View>
@@ -142,11 +142,11 @@ const Tabs = () => {
                                 width: 25,
                                 height: 25,
                                 bottom: 5,
-                                tintColor: focused ? '#e32f45' : '#748c94'
+                                tintColor: focused ? '#2C66FF' : '#748c94'
                              }}
                             />
                               <Text
-                                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                                style={{color: focused ? '#2C66FF' : '#748c94', fontSize: 12}}>
                                  Wallet
                               </Text>
                         </View>
