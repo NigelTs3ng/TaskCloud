@@ -1,6 +1,6 @@
 import React from 'react'
 // This allows scrolling of the application
-import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet, Dimensions} from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet, Dimensions, TouchableOpacity} from 'react-native'
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Reviews from '../components/Reviews';
@@ -11,16 +11,34 @@ import {FontAwesome} from "@expo/vector-icons"
 
 
 
-export default function ResumeScreen() {
+export default function ResumeScreen({navigation}) {
   return (
 
 
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-      <View style={{ backgroundColor: "#2C66FF", padding: 40 }}>
       {/* TaskCloud Header */}
-      <Header style={{ background: "blue", flex: 1 }} />
-      <SearchBar />
+      <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+        <TouchableOpacity
+          style=
+          {{
+            backgroundColor: "#2C66FF",
+            paddingVertical: 4,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: 'center'
+          }}
+          onPress={() => navigation.navigate("Home")}>
+         <Header style={{ background: 'blue', flex: 1}}/>
+        </TouchableOpacity>
       </View>
+
+
+
+
+
+
+      {/* <SearchBar /> */}
       
         <View style={{ 
           flex: 1,
@@ -43,14 +61,19 @@ export default function ResumeScreen() {
             alignItems: 'center',
             
             }}>
-              <ScrollView horizontal = {false} showsVerticalScrollIndicator={true}>
+              <ScrollView 
+              horizontal = {false} 
+              showsVerticalScrollIndicator={true} 
+              scalesPageToFit={true}
+              bounces={false}
+              width={"100%"}>
                 {/* ROW 1: Taskcloud Header Image */}
-                <View style={{flexDirection:"row", paddingBottom: 10}}>
+                <View style={{flexDirection:"row", paddingBottom: 10, width:"100%"}}>
                   <Image source= {require("../assets/images/TaskCloud-Icon.png")} style = {{
                       width: 80,
                       height: 60,
                       resizeMode: "contain"}}/>
-                  <Text style={{ fontSize: 40, color: 'white'}}>TaskCloud</Text>
+                  <Text style={{ fontSize: 35, color: 'white', padding: 5}}>TaskCloud</Text>
                 </View>
 
                 <View style={{
