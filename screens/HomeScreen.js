@@ -27,9 +27,25 @@ const HomeScreen = () => {
         <SearchBar />
       </View>
       <Categories />
-      <ListingItems />
-      <View>
-        <Text>Email: {auth.currentUser?.email}</Text>
+      <View
+        style={{
+          backgroundColor: "#2C66FF",
+          width: "100%",
+          padding: 15,
+          alignItems: "center",
+          borderColor: "black",
+          borderWidth: 1,
+        }}
+      >
+        <Text
+          style={{
+            color: "white",
+            fontWeight: "220",
+            fontSize: 14,
+          }}
+        >
+          Email: {auth.currentUser?.email}
+        </Text>
         <TouchableOpacity onPress={handleSignOut}>
           <Text
             style={{
