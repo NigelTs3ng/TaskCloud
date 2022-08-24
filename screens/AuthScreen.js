@@ -53,7 +53,9 @@ const AuthScreen = () => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-            <View style={{ backgroundColor: "#2C66FF", padding: 20 }}>
+      {/* Header for the application */}
+      <View style={{ backgroundColor: "#2C66FF", padding: 20}}>
+        {/* Home Button */}
         <TouchableOpacity
           style=
           {{
@@ -61,10 +63,10 @@ const AuthScreen = () => {
             paddingVertical: 4,
             paddingHorizontal: 16,
             borderRadius: 30,
+            // Ensures TaskCloud Logo is Centred
+            alignSelf: 'center'
           }}
-          // Remove Home Button Functionality as it allows user to bypass the login function
-          // onPress={() => navigation.navigate("Home")}
-          >
+          onPress={() => navigation.navigate("Home")}>
          <Header style={{ background: 'blue', flex: 1}}/>
         </TouchableOpacity>
       </View>
