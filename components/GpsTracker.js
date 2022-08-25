@@ -150,7 +150,7 @@ TaskManager.defineTask(LOCATION_TRACKING, async ({ data, error }) => {
         long = locations[0].coords.longitude;
 
         // Print out the current user co-ordinates on console
-        console.log(`${new Date(Date.now()).toLocaleString()}: ${lat},${long}`);
+        //console.log(`${new Date(Date.now()).toLocaleString()}: ${lat},${long}`);
     }
 });
 export default UserLocation;
