@@ -28,12 +28,20 @@ export default function GpsScreen({navigation}) {
          <Header style={{ background: 'blue', flex: 1}}/>
         </TouchableOpacity>
       </View>
-      {/* <SearchBar /> */}
 
       {/* Back Button */}
       <Pressable 
         // Button Styling
-        style={buttonStyles.button}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed
+            // On press, background color will be
+              ? '#0080ff'
+            // On release, background color will be
+              : 'blue'
+          },
+          buttonStyles.backButton          
+        ]}
         // Button Navigation
         onPress={() => navigation.goBack()}>
           {/* Button Text */}
@@ -102,4 +110,18 @@ const buttonStyles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
+  
+  backButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 15,
+    elevation: 3,
+    margin: 5,
+    borderWidth: 1
+  }
 });
+
+
+

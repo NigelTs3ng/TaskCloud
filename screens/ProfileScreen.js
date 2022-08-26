@@ -16,6 +16,9 @@ import React, {useState} from "react";
 import Header from "../components/Header";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+// Picker for add child status form
+import { Picker } from "@react-native-picker/picker";
+
 
 import UserProfileInfo from "../components/UserProfileInfo";
 import ParentProfileInfo from "../components/ParentProfileInfo";
@@ -68,8 +71,20 @@ function SelectProfile({ navigation }) {
 
         <View style={{ padding: 10 }} />
 
+
+
         {/* User link */}
-      <Pressable style={buttonStyles.button}           
+      <Pressable         
+      style={({ pressed }) => 
+      [{
+          backgroundColor: pressed
+          // On press, background color will be
+            ? '#0080ff'
+          // On release, background color will be
+            : 'blue'
+        },
+        buttonStyles.button,
+      ]}           
       onPress={() => {
             navigation.navigate("Profile", {
               screen: "ProfileUser",
@@ -86,7 +101,16 @@ function SelectProfile({ navigation }) {
         {/* Parent link */}
         <Pressable 
           // Button Styling
-          style={buttonStyles.button}
+          style={({ pressed }) => 
+          [{
+              backgroundColor: pressed
+              // On press, background color will be
+                ? '#0080ff'
+              // On release, background color will be
+                : 'blue'
+            },
+            buttonStyles.button,
+          ]}   
           // Button Navigation
           onPress={() => navigation.navigate("ProfileParent")}>
             {/* Button Text */}
@@ -276,10 +300,6 @@ function ProfileUser({ route, navigation }) {
 
 // Parent profile page
 function ProfileParent({ navigation }) {
-  // // Example set of linked accounts
-  // const parent = {
-  //   linkedAccounts: [users[0], users[1]],
-  // };
   // Values for input form
   const [Name, setName] = useState("");
   const [Phone, setPhone] = useState("");
@@ -295,10 +315,34 @@ function ProfileParent({ navigation }) {
       status: Status,
     }
 
+    // Check if user has not filled up any of the form input
+    if (Name == '' || Phone == '' || Age == '')
+    {
+      alert ("Form has not been filled");
+      return;
+    }
+
+    // Checks if user has added too many children in the app
+    if (parent.linkedAccounts.length > 4)
+    {
+      alert("Maximum amount of child added!");
+      return;
+    }
+
+    // Check if user's age is too extreme
+    else if (Age > 30 || Age <= 0)
+    {
+      alert("Invalid age, please try again!");
+      return;
+    }
+
     //parent.push(apple);
     parent.linkedAccounts.push(apple);
 
-    console.log(parent.linkedAccounts[parent.linkedAccounts.length - 1]);
+    // Alert User that addition of form has been successfull
+    alert("Child: "+ Name + " has been added successfully")
+
+    setModalVisible(!modalVisible)  
   };
 
 
@@ -379,10 +423,9 @@ function ProfileParent({ navigation }) {
                   <Text style={styles.profileText}>Name: {user.name}</Text>
                   <Text style={styles.profileText}>HP: {user.hp}</Text>
                   <Text style={styles.profileText}>Age: {user.age}</Text>
-                  <Text style={styles.currentTaskText}>Current Task: {user.status}</Text>
+                  <Text style={styles.currentTaskText}>Curently: {user.status}</Text>
                 </View>
               </View>
-              {/* <Text style={styles.profileText}>Current Task: {user.status}</Text> */}
               {/* Track Location Button */}
               <Pressable 
                 // Button Styling
@@ -398,7 +441,8 @@ function ProfileParent({ navigation }) {
               ]}
               // Button Navigation
               onPress={() => {
-                if (user.status != 'inactive') navigation.navigate('Gps')
+                // If user status is inactive, tell parent that person is not working
+                if (user.status != 'Inactive') navigation.navigate('Gps')
                 else alert("Person is not working at the moment")
             }
                 }>
@@ -423,30 +467,50 @@ function ProfileParent({ navigation }) {
       >
         <View style={ModalStyles.centeredView}>
           <View style={ModalStyles.modalView}>
-            <Text style={ModalStyles.modalText}>Input User Details Below</Text>
+          <ScrollView>
+            <Text style={ModalStyles.modalText}>Input Child Details Below</Text>
+            <Text>Name:</Text>
             {/* name input*/}
             <TextInput 
             placeholder="Name"
             value={Name}
+            maxLength={20}
+            style={formStyles.textInputs}
             onChangeText={(text) => setName(text)}/>
 
-            {/* hp input*/}
+            {/* Phone input*/}
+            <Text>Phone:</Text>
             <TextInput 
             placeholder="Phone number"
             value={Phone}
+            keyboardType={"number-pad"}
+            maxLength={8}
+            style={formStyles.textInputs}
             onChangeText={(text) => setPhone(text)}/>
 
             {/* age input */}
+            <Text>Age:</Text>
             <TextInput 
             placeholder="Age"
             value={Age}
+            maxLength={2}
+            style={formStyles.textInputs}
+            keyboardType={"number-pad"}
             onChangeText={(text) => setAge(text)}/>
 
             {/* status input */}
-            <TextInput 
-            placeholder="Status"
-            value={Status}
-            onChangeText={(text) => setStatus(text)}/>
+            <Text>Status:</Text>
+            <Picker
+              selectedValue={Status}
+              onValueChange={(value) => setStatus(value)}
+              style={formStyles.pickers}
+            >
+              {/* Values */}
+              {/* Working */}
+              <Picker.Item label="Working" value="Working" />
+              {/* Inactive */}
+              <Picker.Item label="Inactive" value="Inactive" />
+            </Picker>
 
             <Pressable
                       // Button Styling
@@ -454,17 +518,15 @@ function ProfileParent({ navigation }) {
                 {
                   backgroundColor: pressed
                   // On press, background color will be
-                    ? 'white'
+                    ? '#0080ff'
                   // On release, background color will be
-                    : '#60cc7d'
+                    : 'blue'
                 },
                 buttonStyles.ProfileButtons,
-                ModalStyles.buttonClose
               ]}
               onPress={() => {
                 // Submits the form input
                 handleSubmission();
-                alert("Form has been submitted!")
               }}
             >
               <Text style={ModalStyles.textStyle}>Submit</Text>
@@ -476,17 +538,17 @@ function ProfileParent({ navigation }) {
                 {
                   backgroundColor: pressed
                   // On press, background color will be
-                    ? 'white'
+                    ? '#0080ff'
                   // On release, background color will be
-                    : '#60cc7d'
+                    : 'blue'
                 },
                 buttonStyles.ProfileButtons,
-                ModalStyles.buttonClose
               ]}
               onPress={() => setModalVisible(!modalVisible)}
             >
               <Text style={ModalStyles.textStyle}>Exit</Text>
             </Pressable>
+            </ScrollView>
           </View>
         </View>
       </Modal>
@@ -621,8 +683,27 @@ const ModalStyles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center"
   }
-
 })
+/*------------------------Form Input Styling--------------------------------*/
+const formStyles = StyleSheet.create({
+  textInputs: {
+    marginVertical: 10,
+    width: "99%",
+    padding: 10,
+    borderWidth: 2,
+    alignSelf: "center",
+    borderColor: "#666",
+  },
+  
+  pickers: {
+    width: "99%",
+    borderWidth: 2,
+    borderColor: "#666",
+    alignSelf: "center"
+  }
+})
+
+
 
 /*------------------------Styling--------------------------------*/
 const styles = StyleSheet.create({
@@ -649,7 +730,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     margin: 5,
     textAlign: "center",
-  },
+  }
 });
 
 /*------------------------Button Styling--------------------------------*/
@@ -659,9 +740,10 @@ const buttonStyles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 15,
     elevation: 3,
-    backgroundColor: 'blue',
+    margin: 5,
+    borderWidth: 1
   },
   text: {
     fontSize: 16,
@@ -714,16 +796,6 @@ const buttonStyles = StyleSheet.create({
     elevation: 3,
     margin: 5,
     borderWidth: 1
-  },
-  backButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 15,
-    elevation: 3,
-    margin: 5,
-    borderWidth: 1
-  },
+  }
 });
 

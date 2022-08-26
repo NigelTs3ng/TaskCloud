@@ -65,8 +65,7 @@ const AuthScreen = () => {
             borderRadius: 30,
             // Ensures TaskCloud Logo is Centred
             alignSelf: 'center'
-          }}
-          onPress={() => navigation.navigate("Home")}>
+          }}>
          <Header style={{ background: 'blue', flex: 1}}/>
         </TouchableOpacity>
       </View>
