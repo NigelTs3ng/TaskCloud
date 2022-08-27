@@ -14,3 +14,7 @@ web-build/
 .DS_Store
 
 .vercel
+package-lock.json
+yarn.lock
+.gitignore
+.vscode/settings.json
