@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   TouchableOpacity,
   StyleSheet,
-  Button,
   KeyboardAvoidingView,
   TextInput,
   ScrollView

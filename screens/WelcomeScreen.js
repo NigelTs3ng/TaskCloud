@@ -2,7 +2,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
   StyleSheet,
   Button,
 } from "react-native";

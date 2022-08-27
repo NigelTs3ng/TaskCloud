@@ -4,7 +4,6 @@ import {
     Image,
     ScrollView,
     StyleSheet,
-    TouchableOpacity,
   } from "react-native";
   import React from "react";
   

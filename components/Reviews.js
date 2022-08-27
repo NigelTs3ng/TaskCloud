@@ -2,12 +2,10 @@ import {
     View,
     Text,
     Image,
-    ScrollView,
     StyleSheet,
     Dimensions
   } from "react-native";
   import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
   
   const items = [

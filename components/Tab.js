@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 import HomeScreen from '../screens/HomeScreen';
 import ChatScreenLanding from '../screens/AllChatScreen';

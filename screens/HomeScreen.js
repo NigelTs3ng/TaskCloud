@@ -1,10 +1,8 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React from "react";
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
 import Categories from "../components/Categories";
 import ListingItems from "../components/ListingItems";
-import { StackActions } from "@react-navigation/native";
 import { auth } from "../components/firebase";
 import { useNavigation } from "@react-navigation/core";
 

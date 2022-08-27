@@ -2,7 +2,6 @@ import React from 'react'
 // This allows scrolling of the application
 import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet, Dimensions, TouchableOpacity} from 'react-native'
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
 import Reviews from '../components/Reviews';
 
 

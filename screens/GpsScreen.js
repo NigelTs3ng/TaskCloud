@@ -1,9 +1,7 @@
-import { View, Text, SafeAreaView, StyleSheet, Image, Dimensions, TouchableOpacity, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
-import SearchBar from "../components/SearchBar";
 
-import Tabs from '../components/Tab';
 import GpsTracker from '../components/GpsTracker';
 
 

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, SafeAreaView } from 'react-native'
 import React from 'react'
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';

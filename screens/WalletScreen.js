@@ -4,7 +4,6 @@ import {
   ScrollView, 
   TouchableOpacity,
   StyleSheet,
-  Button,
   Image,
   SafeAreaView,
   Dimensions,

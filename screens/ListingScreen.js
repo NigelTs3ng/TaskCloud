@@ -5,13 +5,10 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
-  ScrollView,
   Pressable
 } from "react-native";
 import React from "react";
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
-import { useNavigation } from "@react-navigation/core";
 import listingPicture from "../assets/images/listingPic.png";
 import Description from "../assets/images/description.png";
 import { Dimensions } from "react-native";
