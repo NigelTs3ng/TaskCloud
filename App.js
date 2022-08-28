@@ -5,7 +5,7 @@ import Tabs from "./components/Tab";
 import GpsScreen from "./screens/GpsScreen";
 import AuthScreen from "./screens/AuthScreen";
 import ListingScreen from "./screens/ListingScreen";
-import HomeScreen from "./screens/HomeScreen";
+import AllChatScreen from "./screens/AllChatScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,8 +35,8 @@ export default function App() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="Home"
-          component={HomeScreen}
+          name="AllChatScreen"
+          component={AllChatScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
