@@ -66,7 +66,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
     }
   ];
   
-  export default function ListingItems({ navigation }) {
+  export default function ListingItems() {
     return (
       <SafeAreaView>
         {items.map((item) => {

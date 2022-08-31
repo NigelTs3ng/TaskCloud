@@ -1,7 +1,6 @@
 import { View, Text, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
-
 import GpsTracker from '../components/GpsTracker';
 
 
@@ -50,10 +49,7 @@ export default function GpsScreen({navigation}) {
 
     <View style={{ 
           flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'white',
           padding: 20
           }}>
             {/* GPS BACKGROUND */}

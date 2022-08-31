@@ -1,10 +1,8 @@
 import React from 'react'
 // This allows scrolling of the application
-import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet, Dimensions, TouchableOpacity} from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image, Dimensions, TouchableOpacity} from 'react-native'
 import Header from "../components/Header";
 import Reviews from '../components/Reviews';
-
-
 // importing stuff for star ratings
 import {FontAwesome} from "@expo/vector-icons"
 
@@ -31,13 +29,6 @@ export default function ResumeScreen({navigation}) {
          <Header style={{ background: 'blue', flex: 1}}/>
         </TouchableOpacity>
       </View>
-
-
-
-
-
-
-      {/* <SearchBar /> */}
       
         <View style={{ 
           flex: 1,
@@ -129,9 +120,6 @@ export default function ResumeScreen({navigation}) {
             </View>
         </View>
       
-      {/* This is the background of the resume page */}
-
-
     </SafeAreaView>
   )
 }
