@@ -17,5 +17,5 @@ Steps to try out the application
 
 
 Login information (You can create your own)
-Email: jondoe@Gmail.com
+Email: johndoe@Gmail.com
 Password: lmaook
